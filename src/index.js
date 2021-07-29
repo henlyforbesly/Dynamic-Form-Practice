@@ -7,14 +7,18 @@ const inputGroup = document.querySelector('.input-wrapper');
 inputGroup.setAttribute('id', `inputWrapper${idCount}`);
 const inputGroupTemplate = inputGroup.cloneNode(true);
 
-removeBtns[0].addEventListener('click', (event) => {
-    formContainer.removeChild(document.getElementById('inputWrapper1'));
-})
+
 
 $(document).ready(function() {
     $('.js-example-basic-single').select2({
         theme: "bootstrap-5",
     });
+
+    const header = document.querySelector('header');
+
+    removeBtns[0].addEventListener('click', (event) => {
+        formContainer.removeChild(document.getElementById('inputWrapper1'));
+    })
 
     Addbtn.addEventListener('click', () => {
         $(document).ready(function() {
@@ -30,9 +34,11 @@ $(document).ready(function() {
         removeBtns = document.querySelectorAll('.removeForm');
         removeBtns[removeBtns.length - 1].addEventListener('click', (event) => {
             formContainer.removeChild(removeCandidate);
+            if (header.getBoundingClientRect().top >= 0) {
+                header.classList.remove('show');
+            }
         })
     
-        const header = document.querySelector('header');
         if (header.getBoundingClientRect().top == 0) {
             header.classList.add('show');
         }
