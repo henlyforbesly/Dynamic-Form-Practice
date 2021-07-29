@@ -18,6 +18,9 @@ $(document).ready(function() {
 
     removeBtns[0].addEventListener('click', (event) => {
         formContainer.removeChild(document.getElementById('inputWrapper1'));
+        if (header.getBoundingClientRect().top > 0) {
+            header.classList.remove('show');
+        }
     })
 
     Addbtn.addEventListener('click', () => {
@@ -34,11 +37,11 @@ $(document).ready(function() {
         removeBtns = document.querySelectorAll('.removeForm');
         removeBtns[removeBtns.length - 1].addEventListener('click', (event) => {
             formContainer.removeChild(removeCandidate);
-            if (header.getBoundingClientRect().top >= 0) {
+            if (header.getBoundingClientRect().top > 0) {
                 header.classList.remove('show');
             }
         })
-    
+        
         if (header.getBoundingClientRect().top == 0) {
             header.classList.add('show');
         }
